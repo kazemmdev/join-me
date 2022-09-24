@@ -13,3 +13,18 @@ form {
 .button {
   margin: 8px 0;
 }
+
+.footerText {
+  margin: 16px 0;
+  text-align: center;
+
+  & :last-child {
+    margin: 0 8px;
+    text-decoration: underline;
+    color: rgb(184, 184, 184);
+  }
+}
+
+.loginFormPassword {
+  margin: 8px 0;
+}
