@@ -1,11 +1,34 @@
-import { ConversationSidebarStyle } from "../../utils/styles";
+import { FC } from "react";
+import {
+  ConversationSidebarContainer,
+  ConversationSidebarHeader,
+  ConversationSidebarItem,
+  ConversationSidebarStyle,
+} from "../../utils/styles";
+import { ConversationType } from "../../utils/types";
+import styles from "./index.module.scss";
 
-const ConversationSidebar = () => {
+type Props = {
+  conversations: ConversationType[];
+};
+
+const ConversationSidebar: FC<Props> = ({ conversations }) => {
   return (
     <ConversationSidebarStyle>
-      <header>
+      <ConversationSidebarHeader>
         <h1>Conversations</h1>
-      </header>
+      </ConversationSidebarHeader>
+      <ConversationSidebarContainer>
+        {conversations.map((conversation) => (
+          <ConversationSidebarItem key={conversation.id}>
+            <div className={styles.conversationAvatar}></div>
+            <div>
+              <span className={styles.conversationName}>{conversation.name}</span>
+              <span className={styles.conversationLastMessage}>{conversation.lastMessage}</span>
+            </div>
+          </ConversationSidebarItem>
+        ))}
+      </ConversationSidebarContainer>
     </ConversationSidebarStyle>
   );
 };
